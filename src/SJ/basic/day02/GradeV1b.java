@@ -26,7 +26,7 @@ public class GradeV1b {
 		// obtain user input to get subject scores
 		
 		System.out.println("input your name"); 
-		name = sc.next();
+		name = sc.nextLine();
 		
 		System.out.println("input your Korean score"); 
 		kor = sc.nextInt();

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Condition {
 	public static void main(String[] args) {
 		
-		/*int i = 1;
+		int i = 1;
 		while(i <= 100) {
 			if(i%2==0) {
 				System.out.println(i + "은(는) 짝수입니다.");
@@ -14,7 +14,7 @@ public class Condition {
 				System.out.println(i + "은(는) 홀수입니다.");
 			}
 			i++;
-		}*/
+		}
 		
 		// 사용자가 연봉(salary)과 결혼 여부(isMarried)를 입력하면
 		// 다음의 세금율에 의해 납부해야 할 세금(tax)을
@@ -40,18 +40,22 @@ public class Condition {
 		{
 			if(isMarried == "아니오") {
 				if(salary <= 3000) {
-					System.out.println("10%의 세금이 부과됩니다");
+					System.out.printf("10%%의 세금이 부과됩니다\n"
+							+ "%.1f 만원", salary * 0.1);
 				}
 				else {
-					System.out.println("25%의 세금이 부과됩니다");
+					System.out.printf("25%%의 세금이 부과됩니다\n"
+							+ "%.1f 만원", salary * 0.25);
 				}
 			}
 			else {
 				if(salary <= 6000) {
-					System.out.println("15%의 세금이 부과됩니다");
+					System.out.printf("15%%의 세금이 부과됩니다\n"
+							+ "%.1f 만원", salary * 0.15);
 				}
 				else {
-					System.out.println("35%의 세금이 부과됩니다");
+					System.out.printf("35%%의 세금이 부과됩니다\n"
+							+ "%.1f 만원", salary * 0.35);
 				}
 			}
 			break;
@@ -61,7 +65,7 @@ public class Condition {
 		
 		}
 		}catch(Exception e){
-			System.out.println("숫자로 입력하세요");
+			System.out.println(e);
 		}
 		}
 	}

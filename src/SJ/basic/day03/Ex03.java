@@ -116,5 +116,7 @@ public class Ex03 {
 		System.out.println((2 < 3) || (5 > 2) && !(4 == 4) || 9 != 4);
 		System.out.println(6 == 9 || 5 < 6 && 8 < 4 || 4 > 3);
 		
+		
+		
 	}
 }
