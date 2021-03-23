@@ -15,7 +15,7 @@ public class ArraysEx {
 		System.out.println(a[0] + " " + a[1] + " " + a[2]);
 		a[1] = a[2];
 		System.out.println(a[0] + " " + a[1] + " " + a[2]);
-		
+
 		// sampleArray의 index의 범위를 초과하여 오류 발생
 		/*int [] sampleArray = new int [10];
 		for ( int index = 1; index <= sampleArray.length; index++)
@@ -27,6 +27,7 @@ public class ArraysEx {
 			arrayA[i] = i + 1;
 			System.out.print(arrayA[i] + " ");
 		}
+
 		System.out.println();
 		
 		int [] arrayB = new int [11];
@@ -38,18 +39,21 @@ public class ArraysEx {
 		
 		int [] arrayC = new int [10];
 		for (int i = 0; i < 10; i++) {
-			arrayC[i] = (i+1) * (i+1);
+			arrayC[i] = (int) Math.pow((i + 1), 2);
 			System.out.print(arrayC[i] + " ");
 		}
 		System.out.println();
 		
 		int [] arrayD = new int [10];
 		for (int i = 0; i < 10; i++) {
-			arrayD[i] = 0;
 			System.out.print(arrayD[i] + " ");
 		}
 		System.out.println();
-		
+		// when user creates reference type variables with new type[]
+		// initial value is created automatically
+		// number type: 0, object type: null
+
+
 		int [] arrayE = new int [9];
 		arrayE[0] = 1;
 		arrayE[1] = 4;
@@ -68,18 +72,16 @@ public class ArraysEx {
 		// 56.
 		int [] arrayF = new int[10];
 		int [] arrayG = new int[10];
-		int j = 9;
 		Scanner sc = new Scanner(System.in);
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < arrayF.length; i++) {
 			System.out.println("input numbers");
 			arrayF[i] = sc.nextInt();
 		}
 		
-		for (int i = 0; i < 10; i++) {
-			arrayG[i] = arrayF[j - i];
+		for (int i = 0; i < arrayF.length; i++) {
+			arrayG[i] = arrayF[(arrayF.length-1) - i];
 			System.out.print(arrayG[i] + " ");
 		}
-		
 	}
 }
