@@ -24,7 +24,7 @@ public class Ex05 {
         age = currentY - birthY + 1;
         System.out.println("Your age: " + age);
     }
-    public static void charge(){
+    public static void change(){
         int totalPrice;
         int paidPrice;
         int change;
@@ -67,6 +67,6 @@ public class Ex05 {
 
     public static void main(String[] args) {
         //heckBirth();
-        charge();
+        change();
     }
 }

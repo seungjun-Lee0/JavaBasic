@@ -1,6 +1,6 @@
 package SJ.basic.day08;
 
-public class Inheritance {
+public class InheritanceA {
 
     public static void main(String[] args) {
         // method 상속 Inheritance
