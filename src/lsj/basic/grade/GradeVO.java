@@ -1,13 +1,13 @@
-package SJ.basic.grade;
+package lsj.basic.grade;
 
 public class GradeVO {
-    private String name;
-    private int kor;
-    private int eng;
-    private int math;
-    private int total;
-    private int avg;
-    private char grade;
+    protected String name;
+    protected int kor;
+    protected int eng;
+    protected int math;
+    protected int total;
+    protected double avg;
+    protected char grade;
 
     public GradeVO(String name, int kor, int eng, int math) {
         this.name = name;
@@ -56,11 +56,11 @@ public class GradeVO {
         this.total = total;
     }
 
-    public int getAvg() {
+    public double getAvg() {
         return avg;
     }
 
-    public void setAvg(int avg) {
+    public void setAvg(double avg) {
         this.avg = avg;
     }
 
