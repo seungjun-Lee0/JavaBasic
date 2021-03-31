@@ -8,5 +8,5 @@ public interface GradeService {
     void displayMenu();
     GradeVO readGrade();
     void computeGrade(GradeVO go);
-    void writeGrade(GradeVO go);
+    //void writeGrade(GradeVO go);
 }

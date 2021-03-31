@@ -78,10 +78,10 @@ public class GradeServiceImpl implements GradeService{
         }
     }
 
-    @Override
+    /*@Override
     public void writeGrade(GradeVO go) {
         String fmt = "name: %s Korean: %d English: %d Math: %d\ntotal: %d Average: %.1f Grade: %c\n\n\n";
         System.out.printf(fmt,go.getName(), go.getKor(), go.getEng(), go.getMath(), go.getTotal(), go.getAvg(), go.getGrade());
-    }
+    }*/
 }
 

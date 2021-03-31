@@ -71,4 +71,13 @@ public class GradeVO {
     public void setGrade(char grade) {
         this.grade = grade;
     }
+
+    @Override
+    public String toString() {
+        String fmt = "{name = %s, Korean = %d, English = %d, Math = %d, total = %d, Average = %.1f, Grade = %c }";
+        String result = String.format(fmt, name, kor, eng, math, total, avg, grade);
+        return result;
+    }
 }
+
+

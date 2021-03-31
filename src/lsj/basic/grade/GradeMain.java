@@ -7,6 +7,7 @@ public class GradeMain {
 
         GradeVO go = gs.readGrade();
         gs.computeGrade(go);
-        gs.writeGrade(go);
+        System.out.println(go.toString());
+        //gs.writeGrade(go);
     }
 }
