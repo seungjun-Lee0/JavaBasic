@@ -26,7 +26,8 @@ public class GradeV5cMain {
                 case "1": go = gs.readGrade();
                           gs.computeGrade(go); break;
                 case "2": break;
-                case "3": gs.writeGrade(go); break;
+                case "3":
+                    System.out.println(go.toString()); break;
                 case "4": break;
                 case "5": break;
                 case "0": System.exit(0); break;
