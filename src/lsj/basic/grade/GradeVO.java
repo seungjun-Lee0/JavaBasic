@@ -1,6 +1,8 @@
 package lsj.basic.grade;
 
-public class GradeVO {
+import java.io.Serializable;
+
+public class GradeVO  implements Serializable {
     protected String name;
     protected int kor;
     protected int eng;
