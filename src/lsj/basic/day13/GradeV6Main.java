@@ -1,7 +1,5 @@
 package lsj.basic.day13;
 
-import lsj.basic.grade.GradeService;
-import lsj.basic.grade.GradeServiceImpl;
 import lsj.basic.grade.GradeVO;
 
 import java.util.Scanner;

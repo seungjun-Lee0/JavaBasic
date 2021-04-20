@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="javaLib">
+    <CLASSES>
+      <root url="jar://C:/Java/lib/json-simple-1.1.1.jar!/" />
+      <root url="jar://C:/Java/lib/mariadb-java-client-2.2.0.jar!/" />
+      <root url="jar://C:/Java/lib/ojdbc8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
