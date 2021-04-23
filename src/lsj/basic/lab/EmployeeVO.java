@@ -1,6 +1,6 @@
 package lsj.basic.lab;
 
-public class Employee {
+public class EmployeeVO {
     protected int empno;
     protected String fname;
     protected String lname;
@@ -12,14 +12,40 @@ public class Employee {
     protected double commission;
     protected int mgrid;
     protected int deptid;
+    protected String regdate;
 
-    public Employee(int empno, String fname, String lname, String email, String phone, String hdate) {
+    public EmployeeVO() {};
+
+    public EmployeeVO(int empno, String fname, String lname, String email, String phone, String hdate) {
         this.empno = empno;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
         this.phone = phone;
         this.hdate = hdate;
+    }
+
+    public EmployeeVO(String fname, String lname, String email, String phone, String hdate, String jobid, int salary, double commission, int mgrid, int deptid) {
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.phone = phone;
+        this.hdate = hdate;
+        this.jobid = jobid;
+        this.salary = salary;
+        this.commission = commission;
+        this.mgrid = mgrid;
+        this.deptid = deptid;
+    }
+
+    public EmployeeVO(int empno, String fname, String lname, String email, String phone, String hdate, String jobid, int salary, double commission, int mgrid, int deptid, String regdate) {
+        // 이미 정의한 생성자를 호출해서 값들을 초기화함
+        this(empno, fname, lname, email, phone, hdate);
+        this.jobid = jobid;
+        this.salary = salary;
+        this.commission = commission;
+        this.mgrid = mgrid;
+        this.deptid = deptid;
     }
 
     public int getEmpno() {
@@ -108,6 +134,14 @@ public class Employee {
 
     public void setDeptid(int deptid) {
         this.deptid = deptid;
+    }
+
+    public String getRegdate() {
+        return regdate;
+    }
+
+    public void setRegdate(String regdate) {
+        this.regdate = regdate;
     }
 
     @Override

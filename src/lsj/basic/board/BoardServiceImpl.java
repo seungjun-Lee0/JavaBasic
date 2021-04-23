@@ -137,14 +137,14 @@ public class BoardServiceImpl implements BoardService{
             int pos = sc.nextInt();
             System.out.println("수정할 제목을 입력하세요");
             String title = sc.next();
-            System.out.println("수정할 아이디를 입력하세요");
-            String userid = sc.next();
             System.out.println("수정할 내용을 입력하세요");
             sc.nextLine();
             String contents = sc.nextLine();
 
 
-            BoardVO bd = new BoardVO(title,userid,contents);
+            BoardVO bd = new BoardVO();
+            bd.setTitle(title);
+            bd.setContents(contents);
             bd.setBdno(Integer.toString(pos));
             int cnt = bddao.updateBoard(bd);
             if (cnt > 0 ) System.out.println("게시글 수정 완료");

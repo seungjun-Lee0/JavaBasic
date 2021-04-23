@@ -10,8 +10,8 @@ public class EmployeeServiceImpl implements EmployeeService {
             "AC_MGR", "AC_ACCOUNT", "SA_MAN", "SA_REP", "PU_MAN", "PU_CLERK", "ST_MAN",
             "ST_CLERK", "SH_CLERK", "IT_PROG", "MK_MAN", "MK_REP", "HR_REP", "PR_REP"};
 
-    List<Employee> empData = new ArrayList<>();
-    Employee emp = null;
+    List<EmployeeVO> empData = new ArrayList<>();
+    EmployeeVO emp = null;
 
     private static EmployeeService es = null;
     private  EmployeeServiceImpl() {}
@@ -68,7 +68,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
             System.out.println("Successfully read!!");
 
-            emp = new Employee(empno, fname, lname, email, phone, hdate);
+            emp = new EmployeeVO(empno, fname, lname, email, phone, hdate);
             makeExtInfo(emp);
             empData.add(emp);
         }catch (Exception ex){
@@ -78,8 +78,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
-    @Override
-    public void makeExtInfo(Employee emp){
+    public void makeExtInfo(EmployeeVO emp){
         Random rnd = new Random();
 
         emp.setJobid(job[rnd.nextInt(job.length)]);
@@ -96,7 +95,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 "------------------------------------------------------------------\n";
         int pos = 0;
 
-        for(Employee emp : empData){
+        for(EmployeeVO emp : empData){
             System.out.printf(fmt, pos, emp.getEmpno(), emp.getFname(), emp.getLname(),
                     emp.getEmail(), emp.getPhone(), emp.getHdate());
             pos++;
@@ -113,7 +112,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         int empno = sc.nextInt();
 
         try{
-            for(Employee e : empData) {
+            for(EmployeeVO e : empData) {
                 if(empno == e.getEmpno())
 
                 System.out.printf(fmt, emp.getEmpno(), emp.getFname(), emp.getLname(),

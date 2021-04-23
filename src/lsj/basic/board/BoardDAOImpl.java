@@ -1,10 +1,12 @@
 package lsj.basic.board;
 
 import lsj.basic.jdbc.JDBCUtil;
+import oracle.jdbc.proxy.annotation.Pre;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class BoardDAOImpl implements BoardDAO {
     private String addViews = "UPDATE board set views = views + 1 where bdno = ?";
     private String thumpsUp = "UPDATE board set thumbup = thumbup + 1 where bdno = ?";
     private String updateSQL = "UPDATE board \n" +
-            "set title = ?, userid = ?, contents = ?, regdate = current_timestamp \n" +
+            "set title = ?, contents = ?, regdate = current_timestamp \n" +
             "where bdno = ? ";
     private String deleteSQL = "DELETE FROM board where bdno = ? ";
 
@@ -47,17 +49,15 @@ public class BoardDAOImpl implements BoardDAO {
     @Override
     public List<BoardVO> selectBoard() {
         List<BoardVO> bdList = new ArrayList<>();
-        //BoardVO bd = null;
         try(
-                Connection conn = jdbc.openConn();
-                PreparedStatement pstmt = conn.prepareStatement(selectSQL);
+                PreparedStatement pstmt = connection(selectSQL);
                 ResultSet rs = pstmt.executeQuery();
                 ) {
             while (rs.next()) {
                 BoardVO bd = new BoardVO();
                 bd.setBdno(rs.getString(1));
-                bd.setTitle(rs.getString(2));
-                bd.setUserid(rs.getString(3));
+                bd.setUserid(rs.getString(2));
+                bd.setTitle(rs.getString(3));
                 bd.setRegdate(rs.getString(4));
                 bd.setThumsup(rs.getInt(5));
                 bd.setViews(rs.getInt(6));
@@ -72,11 +72,8 @@ public class BoardDAOImpl implements BoardDAO {
     @Override
     public BoardVO selectOneBoard(int bdno) {
         BoardVO bd = new BoardVO();
-        try(
-                Connection conn = jdbc.openConn();
-                PreparedStatement pstmt = conn.prepareStatement(selectOneSQL);
-                PreparedStatement pstmt2 = conn.prepareStatement(addViews);
-                ){
+        try(PreparedStatement pstmt = connection(selectOneSQL);
+            PreparedStatement pstmt2 = connection(addViews)) {
             pstmt.setInt(1, bdno);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()) {
@@ -99,10 +96,7 @@ public class BoardDAOImpl implements BoardDAO {
     @Override
     public int thumpsUP(BoardVO bd) {
         int cnt = 0;
-        try(
-                Connection conn = jdbc.openConn();
-                PreparedStatement pstmt = conn.prepareStatement(thumpsUp);
-        ){
+        try(PreparedStatement pstmt = connection(thumpsUp)){
             pstmt.setString(1, bd.getBdno());
             cnt = pstmt.executeUpdate();
         }catch (Exception e){
@@ -114,14 +108,10 @@ public class BoardDAOImpl implements BoardDAO {
     @Override
     public int updateBoard(BoardVO bd) {
         int cnt = 0;
-        try(
-                Connection conn = jdbc.openConn();
-                PreparedStatement pstmt = conn.prepareStatement(updateSQL);
-                ){
+        try(PreparedStatement pstmt = connection(updateSQL)){
             pstmt.setString(1, bd.getTitle());
-            pstmt.setString(2, bd.getUserid());
-            pstmt.setString(3, bd.getContents());
-            pstmt.setString(4, bd.getBdno());
+            pstmt.setString(2, bd.getContents());
+            pstmt.setString(3, bd.getBdno());
             cnt = pstmt.executeUpdate();
         }catch (Exception e){
             e.printStackTrace();
@@ -133,15 +123,18 @@ public class BoardDAOImpl implements BoardDAO {
     @Override
     public int deleteBoard(int bd) {
         int cnt = 0;
-        try(
-                Connection conn = jdbc.openConn();
-                PreparedStatement pstmt = conn.prepareStatement(deleteSQL);
-                ){
+        try(PreparedStatement pstmt = connection(deleteSQL)){
             pstmt.setInt(1, bd);
             cnt = pstmt.executeUpdate();
         }catch (Exception e){
             e.printStackTrace();
         }
         return cnt;
+    }
+
+    public PreparedStatement connection(String sql) throws SQLException {
+        Connection conn = jdbc.openConn();
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        return pstmt;
     }
 }

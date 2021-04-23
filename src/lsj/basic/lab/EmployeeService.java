@@ -7,5 +7,4 @@ public interface EmployeeService {
     void writeEmployee();
     void modifyEmployee();
     void removeEmployee();
-    void makeExtInfo(Employee emp);
 }
